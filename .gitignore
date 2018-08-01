@@ -1,0 +1,7 @@
+node_modules
+__pycache__
+schedule.db
+config.py
+
+app/__pycache__
+app/static/libs

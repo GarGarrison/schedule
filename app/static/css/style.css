@@ -1,0 +1,132 @@
+table {
+    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+    margin-bottom: 10px;
+}
+table td.user_td {
+    width: 23%;
+}
+table td {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px 5px;
+    font-weight: bold;
+}
+.container {
+    max-width: 900px;
+}
+.pointer {
+    cursor: pointer;
+}
+.form_legend {
+    text-align: right;
+    font-size: 1.5rem;
+    border-bottom: 4px solid #e5e5e5;
+    padding: 5px 0px;
+}
+.context ul {
+    padding: 0px !important;
+}
+
+.week {
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+    margin-bottom: 14px;
+    width: 100%;
+    height: auto;
+    font-size:.9rem;
+}
+.users, .day {
+    float: left;
+    border-bottom: 1px solid #ccc;
+}
+.users {
+    width: 23%;
+    overflow-wrap: break-word;
+}
+.day {
+    width: 11%;
+}
+.day:last-child {
+    border-right: 1px solid #ccc;
+}
+.day.past {
+    opacity: 0.5;
+}
+.users .item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cell, .users .item {
+    min-height: 20px;
+    line-height: 19px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cell {
+    background: #e5e5e5;
+}
+.weekend .cell{
+    background: #eb6767;
+}
+.cell.today {
+    border: 2px solid red;
+    line-height: 16px;
+}
+
+.cell.head {
+    background: white;
+}
+.cell.holiday {
+    background: orange;
+}
+.complex_menu {
+    position: relative;
+    font-size: 1.1rem;
+    width: 100%;
+    background: #dff0d8;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    color: #468847;
+    margin-bottom: 20px;
+}
+.complex_menu_item {
+    width:100%;
+    display: inline-block;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+.complex_menu_item:first-child {
+    border: none;
+}
+.complex_menu_item b {
+    display: block;
+}
+input.menu_item {
+    border-radius: 10px;
+    background: #dff0d8;
+    color: #468847;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.delete {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.back_link {
+    color: #2ab7a9;
+    float: left;
+    margin-right: 20px;
+}
+.back_link i {
+    font-size: 40px;
+}

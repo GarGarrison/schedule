@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block scripts %}
+    <script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <vue-context ref="menu" class="context">
+            <ul slot-scope="child">
+                <li @click="delHoliday(child.data)">Удалить отгул</li>
+            </ul>
+        </vue-context>
+        <div class="col s9">
+            <table>
+                <tr>
+                    <td class="user_td"></td>
+                    <td>Пн</td>
+                    <td>Вт</td>
+                    <td>Ср</td>
+                    <td>Чт</td>
+                    <td>Пт</td>
+                    <td class="weekend">Сб</td>
+                    <td class="weekend">Вс</td>
+                </tr>
+            </table>
+            <div class="week" v-for="week in weeks">
+                <div class="users">
+                    <div class="item"></div>
+                    <div class="item" v-for="user in users">[[ user.name ]]</div>
+                </div>
+                <day v-for="day in week"
+                    @updateduty="updateDay"
+                    :data-users="users"
+                    :data-day="day"
+                    :key="day.id"
+                    >
+                </day>
+            </div>
+            <table>
+                <tr>
+                    <td rowspan="2"></td>
+                    <td colspan="2">[[ str_months[statMonth.last_month] ]]</td>
+                    <td colspan="2">[[ str_months[statMonth.month] ]]</td>
+                    <td colspan="2">Всего</td>
+                    <td rowspan="2">hours</td>
+                </tr>
+                <tr>
+                    <td>Раб.</td>
+                    <td>Вых.</td>
+                    <td>Раб.</td>
+                    <td>Вых.</td>
+                    <td>Раб.</td>
+                    <td>Вых.</td>
+                </tr>
+                <tr v-for="user in users">
+                    <td class="user_td">[[ user.name ]]</td>
+                    <td>[[ stat[user.id].last_workday ]]</td>
+                    <td>[[ stat[user.id].last_weekend ]]</td>
+                    <td>[[ stat[user.id].workday ]]</td>
+                    <td>[[ stat[user.id].weekend ]]</td>
+                    <td>[[ stat[user.id].all_workday ]]</td>
+                    <td>[[ stat[user.id].all_weekend ]]</td>
+                    <td>[[ stat[user.id].minutes ]]</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col s3">
+            <div class="complex_menu">
+                <div class="complex_menu_item">
+                    Сегодня
+                    <b>[[ today ]]</b>
+                    дежурит:
+                </div>
+                <div class="complex_menu_item">
+                    <b>[[ dutyUser.name ]]</b>
+                    <b>[[ dutyUser.phone ]]</b>
+                </div>
+            </div>
+            <month-picker></month-picker>
+            <div class="complex_menu">
+                <div class="complex_menu_item">Сегодня работаем до</div>
+                <time-picker v-model="endOfDay" :init-val="endOfDay"></time-picker>
+                <div class="complex_menu_item pointer" v-show="nowDate > endOfDay" @click="goHome">
+                    Уйти домой
+                </div>
+            </div>
+            <a href="/admin">Admin</a>
+        </div>
+    </div>
+{% endblock %}
